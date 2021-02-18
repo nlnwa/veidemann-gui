@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { BrowserconfigDialogComponent } from './browserconfig-dialog.component';
+import { BrowserConfigDialogComponent } from './browserconfig-dialog.component';
 
 describe('BrowserconfigDialogComponent', () => {
-  let component: BrowserconfigDialogComponent;
-  let fixture: ComponentFixture<BrowserconfigDialogComponent>;
+  let component: BrowserConfigDialogComponent;
+  let fixture: ComponentFixture<BrowserConfigDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BrowserconfigDialogComponent ]
+      declarations: [ BrowserConfigDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BrowserconfigDialogComponent);
+    fixture = TestBed.createComponent(BrowserConfigDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

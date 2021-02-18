@@ -3,7 +3,6 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {MetaComponent} from './meta.component';
 import {MaterialModule} from '../../../commons/material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {LabelsComponent} from '../../../commons/components';
 import {DatePipe} from '@angular/common';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -16,7 +15,7 @@ describe('MetaComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [MetaComponent, LabelsComponent],
+      declarations: [MetaComponent],
       imports: [
         MaterialModule,
         FormsModule,

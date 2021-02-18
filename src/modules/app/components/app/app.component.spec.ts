@@ -7,7 +7,7 @@ import {AppInitializerService} from '../../../core/services/app.initializer.serv
 import {AuthService, GuardService} from '../../../core/services/auth';
 import {ErrorService, SnackBarService} from '../../../core/services';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {MatDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material/dialog';
 import {AppConfig} from '../../../core/models/app-config.model';
 
 describe('AppComponent', () => {

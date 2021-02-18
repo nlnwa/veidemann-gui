@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { PolitenessconfigMultiDialogComponent } from './politenessconfig-multi-dialog.component';
+import { PolitenessConfigMultiDialogComponent } from './politenessconfig-multi-dialog.component';
 
-describe('PolitenessconfigMultiDialogComponent', () => {
-  let component: PolitenessconfigMultiDialogComponent;
-  let fixture: ComponentFixture<PolitenessconfigMultiDialogComponent>;
+describe('PolitenessConfigMultiDialogComponent', () => {
+  let component: PolitenessConfigMultiDialogComponent;
+  let fixture: ComponentFixture<PolitenessConfigMultiDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PolitenessconfigMultiDialogComponent ]
+      declarations: [ PolitenessConfigMultiDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PolitenessconfigMultiDialogComponent);
+    fixture = TestBed.createComponent(PolitenessConfigMultiDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

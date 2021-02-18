@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { BrowserconfigMultiDialogComponent } from './browserconfig-multi-dialog.component';
+import { BrowserConfigMultiDialogComponent } from './browserconfig-multi-dialog.component';
 
 describe('BrowserconfigMultiDialogComponent', () => {
-  let component: BrowserconfigMultiDialogComponent;
-  let fixture: ComponentFixture<BrowserconfigMultiDialogComponent>;
+  let component: BrowserConfigMultiDialogComponent;
+  let fixture: ComponentFixture<BrowserConfigMultiDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BrowserconfigMultiDialogComponent ]
+      declarations: [ BrowserConfigMultiDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BrowserconfigMultiDialogComponent);
+    fixture = TestBed.createComponent(BrowserConfigMultiDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { CrawlerstatusDialogComponent } from './crawlerstatus-dialog.component';
+import { CrawlerStatusDialogComponent } from './crawlerstatus-dialog.component';
 
-describe('CrawlerstatusDialogComponent', () => {
-  let component: CrawlerstatusDialogComponent;
-  let fixture: ComponentFixture<CrawlerstatusDialogComponent>;
+describe('CrawlerStatusDialogComponent', () => {
+  let component: CrawlerStatusDialogComponent;
+  let fixture: ComponentFixture<CrawlerStatusDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CrawlerstatusDialogComponent ]
+      declarations: [ CrawlerStatusDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrawlerstatusDialogComponent);
+    fixture = TestBed.createComponent(CrawlerStatusDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

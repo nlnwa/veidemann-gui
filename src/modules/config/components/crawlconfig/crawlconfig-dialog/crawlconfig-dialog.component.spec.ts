@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { CrawlconfigDialogComponent } from './crawlconfig-dialog.component';
+import { CrawlConfigDialogComponent } from './crawlconfig-dialog.component';
 
-describe('CrawlconfigDialogComponent', () => {
-  let component: CrawlconfigDialogComponent;
-  let fixture: ComponentFixture<CrawlconfigDialogComponent>;
+describe('CrawlConfigDialogComponent', () => {
+  let component: CrawlConfigDialogComponent;
+  let fixture: ComponentFixture<CrawlConfigDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CrawlconfigDialogComponent ]
+      declarations: [ CrawlConfigDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrawlconfigDialogComponent);
+    fixture = TestBed.createComponent(CrawlConfigDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

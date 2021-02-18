@@ -63,7 +63,8 @@ describe('CrawlHostGroupConfigDetailsComponent', () => {
         createdBy: 'admin',
         lastModified: '1511964561',
         lastModifiedBy: 'admin',
-        labelList: [expectedLabel]
+        labelList: [expectedLabel],
+        annotationList: []
       },
       id: '100',
       kind: Kind.CRAWLHOSTGROUPCONFIG,

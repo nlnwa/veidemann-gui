@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { CrawlhostgroupconfigDialogComponent } from './crawlhostgroupconfig-dialog.component';
+import { CrawlHostGroupConfigDialogComponent } from './crawlhostgroupconfig-dialog.component';
 
-describe('CrawlhostgroupconfigDialogComponent', () => {
-  let component: CrawlhostgroupconfigDialogComponent;
-  let fixture: ComponentFixture<CrawlhostgroupconfigDialogComponent>;
+describe('CrawlHostGroupConfigDialogComponent', () => {
+  let component: CrawlHostGroupConfigDialogComponent;
+  let fixture: ComponentFixture<CrawlHostGroupConfigDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CrawlhostgroupconfigDialogComponent ]
+      declarations: [ CrawlHostGroupConfigDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrawlhostgroupconfigDialogComponent);
+    fixture = TestBed.createComponent(CrawlHostGroupConfigDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

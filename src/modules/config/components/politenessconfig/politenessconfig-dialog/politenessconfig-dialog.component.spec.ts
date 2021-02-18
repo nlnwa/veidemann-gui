@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { PolitenessconfigDialogComponent } from './politenessconfig-dialog.component';
+import { PolitenessConfigDialogComponent } from './politenessconfig-dialog.component';
 
-describe('PolitenessconfigDialogComponent', () => {
-  let component: PolitenessconfigDialogComponent;
-  let fixture: ComponentFixture<PolitenessconfigDialogComponent>;
+describe('PolitenessConfigDialogComponent', () => {
+  let component: PolitenessConfigDialogComponent;
+  let fixture: ComponentFixture<PolitenessConfigDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PolitenessconfigDialogComponent ]
+      declarations: [ PolitenessConfigDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PolitenessconfigDialogComponent);
+    fixture = TestBed.createComponent(PolitenessConfigDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { BrowserscriptMultiDialogComponent } from './browserscript-multi-dialog.component';
+import { BrowserScriptMultiDialogComponent } from './browserscript-multi-dialog.component';
 
-describe('BrowserscriptMultiDialogComponent', () => {
-  let component: BrowserscriptMultiDialogComponent;
-  let fixture: ComponentFixture<BrowserscriptMultiDialogComponent>;
+describe('BrowserScriptMultiDialogComponent', () => {
+  let component: BrowserScriptMultiDialogComponent;
+  let fixture: ComponentFixture<BrowserScriptMultiDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BrowserscriptMultiDialogComponent ]
+      declarations: [ BrowserScriptMultiDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BrowserscriptMultiDialogComponent);
+    fixture = TestBed.createComponent(BrowserScriptMultiDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

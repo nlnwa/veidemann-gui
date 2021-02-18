@@ -61,7 +61,8 @@ describe('ScheduleDetailsComponent', () => {
         createdBy: 'admin',
         lastModified: '1511964561',
         lastModifiedBy: 'admin',
-        labelList: [expectedLabel]
+        labelList: [expectedLabel],
+        annotationList: []
       }
     });
 

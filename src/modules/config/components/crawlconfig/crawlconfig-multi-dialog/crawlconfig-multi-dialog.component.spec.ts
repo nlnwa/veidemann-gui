@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { CrawlconfigMultiDialogComponent } from './crawlconfig-multi-dialog.component';
+import { CrawlConfigMultiDialogComponent } from './crawlconfig-multi-dialog.component';
 
-describe('CrawlconfigMultiDialogComponent', () => {
-  let component: CrawlconfigMultiDialogComponent;
-  let fixture: ComponentFixture<CrawlconfigMultiDialogComponent>;
+describe('CrawlConfigMultiDialogComponent', () => {
+  let component: CrawlConfigMultiDialogComponent;
+  let fixture: ComponentFixture<CrawlConfigMultiDialogComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CrawlconfigMultiDialogComponent ]
+      declarations: [ CrawlConfigMultiDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrawlconfigMultiDialogComponent);
+    fixture = TestBed.createComponent(CrawlConfigMultiDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
