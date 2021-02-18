@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RunCrawlDialogComponent } from './run-crawl-dialog.component';
+import {InjectionToken} from "@angular/core";
 
 describe('RunCrawlDialogComponent', () => {
   let component: RunCrawlDialogComponent;
@@ -8,6 +9,7 @@ describe('RunCrawlDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [InjectionToken],
       declarations: [ RunCrawlDialogComponent ]
     })
     .compileComponents();

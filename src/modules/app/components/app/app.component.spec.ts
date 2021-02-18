@@ -5,7 +5,7 @@ import {DialogComponent, TimeComponent} from '..';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AppInitializerService} from '../../../core/services/app.initializer.service';
 import {AuthService, GuardService} from '../../../core/services/auth';
-import {ErrorService, SnackBarService} from '../../../core/services';
+import {AppConfigService, ErrorService, SnackBarService} from '../../../core/services';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogRef} from '@angular/material/dialog';
 import {AppConfig} from '../../../core/models/app-config.model';
@@ -13,7 +13,7 @@ import {AppConfig} from '../../../core/models/app-config.model';
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule, RouterTestingModule, NoopAnimationsModule],
+      imports: [AppConfigService, MaterialModule, RouterTestingModule, NoopAnimationsModule],
       declarations: [
         AppComponent,
         TimeComponent,

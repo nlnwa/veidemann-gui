@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AnnotationComponent } from './annotation.component';
+import {FormBuilder} from '@angular/forms';
 
 describe('AnnotationComponent', () => {
   let component: AnnotationComponent;
@@ -8,6 +9,7 @@ describe('AnnotationComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormBuilder],
       declarations: [ AnnotationComponent ]
     })
     .compileComponents();

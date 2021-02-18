@@ -8,6 +8,7 @@ describe('CollectionPreviewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [],
       declarations: [ CollectionPreviewComponent ]
     })
     .compileComponents();

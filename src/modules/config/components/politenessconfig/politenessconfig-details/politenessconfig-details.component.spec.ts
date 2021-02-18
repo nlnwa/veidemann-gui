@@ -7,7 +7,7 @@ import {CoreTestingModule} from '../../../../core/core.testing.module';
 import {LabelService} from '../../../services/label.service';
 import {of} from 'rxjs';
 
-describe('PolitenessconfigDetailsComponent', () => {
+describe('PolitenessConfigDetailsComponent', () => {
   let component: PolitenessConfigDetailsComponent;
   let fixture: ComponentFixture<PolitenessConfigDetailsComponent>;
 

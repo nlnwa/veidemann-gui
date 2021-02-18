@@ -6,7 +6,7 @@ describe('KindService', () => {
   let service: KindService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({imports: [KindService]});
     service = TestBed.inject(KindService);
   });
 

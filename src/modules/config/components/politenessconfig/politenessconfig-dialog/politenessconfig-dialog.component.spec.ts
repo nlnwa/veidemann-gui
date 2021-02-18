@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PolitenessConfigDialogComponent } from './politenessconfig-dialog.component';
+import {FormBuilder} from '@angular/forms';
 
 describe('PolitenessConfigDialogComponent', () => {
   let component: PolitenessConfigDialogComponent;
@@ -8,6 +9,7 @@ describe('PolitenessConfigDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormBuilder],
       declarations: [ PolitenessConfigDialogComponent ]
     })
     .compileComponents();

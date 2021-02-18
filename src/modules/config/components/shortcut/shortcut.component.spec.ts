@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ShortcutComponent } from './shortcut.component';
+import {ActivatedRoute} from "@angular/router";
 
 describe('ShortcutComponent', () => {
   let component: ShortcutComponent;
@@ -8,6 +9,7 @@ describe('ShortcutComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ActivatedRoute],
       declarations: [ ShortcutComponent ]
     })
     .compileComponents();

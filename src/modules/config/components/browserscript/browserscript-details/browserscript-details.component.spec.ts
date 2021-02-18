@@ -10,6 +10,7 @@ import {BrowserScriptDirective} from './browserscript.directive';
 import {FormGroup} from '@angular/forms';
 import {LabelService} from '../../../services/label.service';
 import {of} from 'rxjs';
+import {AuthService} from '../../../../core/services/auth';
 
 describe('BrowserScriptDetailsComponent', () => {
   let component: BrowserScriptDetailsComponent;
@@ -22,6 +23,7 @@ describe('BrowserScriptDetailsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [BrowserScriptDetailsComponent, BrowserScriptDirective],
       imports: [
+        AuthService,
         RouterTestingModule,
         CommonsModule,
         NoopAnimationsModule,

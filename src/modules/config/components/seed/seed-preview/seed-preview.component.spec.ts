@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SeedPreviewComponent } from './seed-preview.component';
+import {Router} from '@angular/router';
 
 describe('SeedPreviewComponent', () => {
   let component: SeedPreviewComponent;
@@ -8,6 +9,7 @@ describe('SeedPreviewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [Router],
       declarations: [ SeedPreviewComponent ]
     })
     .compileComponents();

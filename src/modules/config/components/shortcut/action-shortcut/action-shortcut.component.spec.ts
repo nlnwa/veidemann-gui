@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ActionShortcutComponent } from './action-shortcut.component';
+import {ConfigurationsModule} from '../../../configurations.module';
 
 describe('ActionShortcutComponent', () => {
   let component: ActionShortcutComponent;
@@ -8,6 +9,7 @@ describe('ActionShortcutComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ConfigurationsModule],
       declarations: [ ActionShortcutComponent ]
     })
     .compileComponents();

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MetaPreviewComponent } from './meta-preview.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Overlay} from "@angular/cdk/overlay";
 
 describe('MetaPreviewComponent', () => {
   let component: MetaPreviewComponent;
@@ -8,7 +10,8 @@ describe('MetaPreviewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MetaPreviewComponent ]
+      declarations: [ MetaPreviewComponent ],
+      providers: [MatSnackBar, Overlay]
     })
     .compileComponents();
   }));

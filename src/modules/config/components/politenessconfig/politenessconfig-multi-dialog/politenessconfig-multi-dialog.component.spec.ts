@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PolitenessConfigMultiDialogComponent } from './politenessconfig-multi-dialog.component';
+import {FormBuilder} from '@angular/forms';
 
 describe('PolitenessConfigMultiDialogComponent', () => {
   let component: PolitenessConfigMultiDialogComponent;
@@ -8,6 +9,7 @@ describe('PolitenessConfigMultiDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormBuilder],
       declarations: [ PolitenessConfigMultiDialogComponent ]
     })
     .compileComponents();

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CrawlLogQueryComponent } from './crawl-log-query.component';
+import {FormBuilder} from '@angular/forms';
 
 describe('CrawlLogQueryComponent', () => {
   let component: CrawlLogQueryComponent;
@@ -8,6 +9,7 @@ describe('CrawlLogQueryComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormBuilder],
       declarations: [ CrawlLogQueryComponent ]
     })
     .compileComponents();

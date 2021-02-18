@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BrowserconfigPreviewComponent } from './browserconfig-preview.component';
+import {CommonsModule} from "../../../../commons";
 
 describe('BrowserconfigPreviewComponent', () => {
   let component: BrowserconfigPreviewComponent;
@@ -8,6 +9,7 @@ describe('BrowserconfigPreviewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [CommonsModule],
       declarations: [ BrowserconfigPreviewComponent ]
     })
     .compileComponents();

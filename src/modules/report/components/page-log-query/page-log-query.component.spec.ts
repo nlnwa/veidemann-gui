@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PageLogQueryComponent } from './page-log-query.component';
+import {FormBuilder} from '@angular/forms';
 
 describe('PageLogQueryComponent', () => {
   let component: PageLogQueryComponent;
@@ -8,6 +9,7 @@ describe('PageLogQueryComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormBuilder],
       declarations: [ PageLogQueryComponent ]
     })
     .compileComponents();

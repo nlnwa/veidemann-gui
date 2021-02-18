@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {JobExecutionComponent} from './job-execution.component';
+import {ActivatedRoute} from "@angular/router";
 
 describe('JobExecutionComponent', () => {
   let component: JobExecutionComponent;
@@ -8,6 +9,7 @@ describe('JobExecutionComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ActivatedRoute],
       declarations: [ JobExecutionComponent ]
     })
     .compileComponents();

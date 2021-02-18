@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import {FormBuilder, FormsModule} from '@angular/forms';
 import { BrowserScriptMultiDialogComponent } from './browserscript-multi-dialog.component';
 
 describe('BrowserScriptMultiDialogComponent', () => {
@@ -8,6 +8,7 @@ describe('BrowserScriptMultiDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormsModule, FormBuilder],
       declarations: [ BrowserScriptMultiDialogComponent ]
     })
     .compileComponents();

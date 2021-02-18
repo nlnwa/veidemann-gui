@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CrawlJobMultiDialogComponent } from './crawljobs-multi-dialog.component';
+import {FormBuilder} from '@angular/forms';
 
 describe('CrawlJobMultiDialogComponent', () => {
   let component: CrawlJobMultiDialogComponent;
@@ -8,6 +9,7 @@ describe('CrawlJobMultiDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormBuilder],
       declarations: [ CrawlJobMultiDialogComponent ]
     })
     .compileComponents();

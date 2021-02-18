@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CrawlerStatusDialogComponent } from './crawlerstatus-dialog.component';
 
 describe('CrawlerStatusDialogComponent', () => {
@@ -8,7 +8,11 @@ describe('CrawlerStatusDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CrawlerStatusDialogComponent ]
+      declarations: [ CrawlerStatusDialogComponent ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
+      ]
     })
     .compileComponents();
   }));

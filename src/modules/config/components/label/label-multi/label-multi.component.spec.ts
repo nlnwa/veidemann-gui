@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LabelMultiComponent } from './label-multi.component';
+import {LabelService} from "../../../services";
 
 describe('LabelMultiComponent', () => {
   let component: LabelMultiComponent;
@@ -8,6 +9,7 @@ describe('LabelMultiComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [LabelService],
       declarations: [ LabelMultiComponent ]
     })
     .compileComponents();

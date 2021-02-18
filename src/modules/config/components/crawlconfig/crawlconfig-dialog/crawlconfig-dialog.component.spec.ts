@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CrawlConfigDialogComponent } from './crawlconfig-dialog.component';
+import {FormBuilder} from '@angular/forms';
 
 describe('CrawlConfigDialogComponent', () => {
   let component: CrawlConfigDialogComponent;
@@ -8,6 +9,7 @@ describe('CrawlConfigDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormBuilder],
       declarations: [ CrawlConfigDialogComponent ]
     })
     .compileComponents();

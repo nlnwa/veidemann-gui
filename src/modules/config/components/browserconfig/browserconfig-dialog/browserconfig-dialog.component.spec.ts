@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BrowserConfigDialogComponent } from './browserconfig-dialog.component';
+import {FormBuilder} from '@angular/forms';
 
 describe('BrowserconfigDialogComponent', () => {
   let component: BrowserConfigDialogComponent;
@@ -8,6 +9,7 @@ describe('BrowserconfigDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [FormBuilder],
       declarations: [ BrowserConfigDialogComponent ]
     })
     .compileComponents();

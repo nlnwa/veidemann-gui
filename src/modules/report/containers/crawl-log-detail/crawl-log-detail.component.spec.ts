@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CrawlLogDetailComponent } from './crawl-log-detail.component';
+import {ActivatedRoute} from '@angular/router';
 
 describe('CrawlLogDetailComponent', () => {
   let component: CrawlLogDetailComponent;
@@ -8,6 +9,7 @@ describe('CrawlLogDetailComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [ActivatedRoute],
       declarations: [ CrawlLogDetailComponent ]
     })
     .compileComponents();
