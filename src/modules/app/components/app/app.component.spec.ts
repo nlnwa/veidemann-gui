@@ -13,7 +13,7 @@ import {AppConfig} from '../../../core/models/app-config.model';
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [AppConfigService, MaterialModule, RouterTestingModule, NoopAnimationsModule],
+      imports: [MaterialModule, RouterTestingModule, NoopAnimationsModule],
       declarations: [
         AppComponent,
         TimeComponent,
@@ -34,7 +34,7 @@ describe('AppComponent', () => {
           }
         },
         {
-          provide: AppConfig,
+          provide: AppConfigService,
           useValue: {}
         },
         {
