@@ -3,17 +3,15 @@ import {AppComponent} from './app.component';
 import {MaterialModule} from '../../../commons/material.module';
 import {DialogComponent, TimeComponent} from '..';
 import {RouterTestingModule} from '@angular/router/testing';
-import {AppInitializerService} from '../../../core/services/app.initializer.service';
-import {AuthService, GuardService} from '../../../core/services/auth';
-import {AppConfigService, ErrorService, SnackBarService} from '../../../core/services';
+import {AppInitializerService} from '../../../core/services';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogRef} from '@angular/material/dialog';
-import {AppConfig} from '../../../core/models/app-config.model';
+import {CoreTestingModule} from '../../../core/core.testing.module';
 
 describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule, RouterTestingModule, NoopAnimationsModule],
+      imports: [CoreTestingModule.forRoot(), MaterialModule, RouterTestingModule, NoopAnimationsModule],
       declarations: [
         AppComponent,
         TimeComponent,
@@ -26,28 +24,6 @@ describe('AppComponent', () => {
             initialized: true,
             error: {message: ''}
           }
-        },
-        {
-          provide: AuthService,
-          useValue: {
-            isAdmin: () => true,
-          }
-        },
-        {
-          provide: AppConfigService,
-          useValue: {}
-        },
-        {
-          provide: GuardService,
-          useValue: {}
-        },
-        {
-          provide: SnackBarService,
-          useValue: {}
-        },
-        {
-          provide: ErrorService,
-          useValue: {}
         },
         {
           provide: MatDialogRef,
