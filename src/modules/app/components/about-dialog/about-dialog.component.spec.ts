@@ -1,6 +1,5 @@
 import { AboutDialogComponent } from './about-dialog.component';
 import {AppConfigService} from '../../../core/services';
-import {CoreTestingModule} from '../../../core/core.testing.module';
 import {createComponentFactory, Spectator} from '@ngneat/spectator';
 import {DeploymentVersions} from '../../../../shared/models/deployment-versions.model';
 
@@ -14,7 +13,7 @@ describe('AboutDialogComponent', () => {
   const createComponent = createComponentFactory(
     {
       component: AboutDialogComponent,
-      imports: [CoreTestingModule.forRoot()],
+      imports: [],
       providers: [{provide: AppConfigService, useValue: {versions}}]
     });
 
