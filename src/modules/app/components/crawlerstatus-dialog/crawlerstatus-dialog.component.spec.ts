@@ -1,29 +1,20 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/dialog';
 import { CrawlerStatusDialogComponent } from './crawlerstatus-dialog.component';
+import {createComponentFactory, Spectator} from '@ngneat/spectator';
 
 describe('CrawlerStatusDialogComponent', () => {
-  let component: CrawlerStatusDialogComponent;
-  let fixture: ComponentFixture<CrawlerStatusDialogComponent>;
+  let spectator: Spectator<CrawlerStatusDialogComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CrawlerStatusDialogComponent ],
-      providers: [
-        { provide: MAT_DIALOG_DATA, useValue: {} },
-        { provide: MatDialogRef, useValue: {} }
-      ]
-    })
-    .compileComponents();
-  }));
+  const createComponent = createComponentFactory(
+    {
+      component: CrawlerStatusDialogComponent,
+      imports: [MatDialogModule],
+      providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }]
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CrawlerStatusDialogComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  beforeEach(() => spectator = createComponent());
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });
