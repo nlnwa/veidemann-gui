@@ -1,4 +1,4 @@
-import { AboutDialogComponent } from './about-dialog.component';
+import {AboutDialogComponent} from './about-dialog.component';
 import {AppConfigService} from '../../../core/services';
 import {createComponentFactory, Spectator} from '@ngneat/spectator';
 import {DeploymentVersions} from '../../../../shared/models/deployment-versions.model';
