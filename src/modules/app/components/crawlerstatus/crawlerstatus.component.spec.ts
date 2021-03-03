@@ -36,9 +36,9 @@ describe('CrawlerStatusComponent', () => {
   });
 
 
-  fit('should show PAUSE_REQUESTED in html', () => {
+  it('should show PAUSE_REQUESTED in html', () => {
     spectator.setInput('runStatus', RunStatus.PAUSE_REQUESTED);
-    //FIXME: Fragile testing based on generic selector
+    // FIXME: Fragile testing based on generic selector
     const list = spectator.queryAll('h1');
     expect(list).not.toBeNull();
     expect(list).toHaveText('IS PAUSING');
