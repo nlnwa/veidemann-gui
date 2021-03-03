@@ -1,24 +1,27 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { MetaPreviewComponent } from './meta-preview.component';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {Overlay} from "@angular/cdk/overlay";
+import {MetaPreviewComponent} from './meta-preview.component';
+import {CoreTestingModule} from '../../../../core/core.testing.module';
+import {ConfigObject} from '../../../../../shared/models/config';
+import {MatIconModule} from '@angular/material/icon';
 
-describe('MetaPreviewComponent', () => {
+fdescribe('MetaPreviewComponent', () => {
   let component: MetaPreviewComponent;
   let fixture: ComponentFixture<MetaPreviewComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MetaPreviewComponent ],
-      providers: [MatSnackBar, Overlay]
+      imports: [MatIconModule, CoreTestingModule.forRoot()],
+      declarations: [MetaPreviewComponent],
+      providers: []
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MetaPreviewComponent);
     component = fixture.componentInstance;
+    component.configObject = new ConfigObject();
     fixture.detectChanges();
   });
 
