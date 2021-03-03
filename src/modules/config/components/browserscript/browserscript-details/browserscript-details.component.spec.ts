@@ -1,18 +1,20 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {BrowserScriptDetailsComponent} from './browserscript-details.component';
 import {SimpleChange} from '@angular/core';
-import {BrowserScript, ConfigObject, Kind, Label, Meta} from '../../../../../shared/models';
+import {ConfigObject, Kind, Label, Meta} from '../../../../../shared/models';
 import {RouterTestingModule} from '@angular/router/testing';
-import {CommonsModule} from '../../../../commons/commons.module';
+import {CommonsModule} from '../../../../commons';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreTestingModule} from '../../../../core/core.testing.module';
 import {BrowserScriptDirective} from './browserscript.directive';
 import {FormGroup} from '@angular/forms';
-import {LabelService} from '../../../services/label.service';
+import {LabelService} from '../../../services';
 import {of} from 'rxjs';
 import {AuthService} from '../../../../core/services/auth';
+import {AnnotationComponent, LabelComponent, MetaComponent} from '../..';
+import {AbilityModule} from '@casl/angular';
 
-describe('BrowserScriptDetailsComponent', () => {
+fdescribe('BrowserScriptDetailsComponent', () => {
   let component: BrowserScriptDetailsComponent;
   let fixture: ComponentFixture<BrowserScriptDetailsComponent>;
   let expectedLabel: Label;
@@ -21,15 +23,24 @@ describe('BrowserScriptDetailsComponent', () => {
   // Async beforeEach needed when using external template
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [BrowserScriptDetailsComponent, BrowserScriptDirective],
+      declarations: [BrowserScriptDetailsComponent,
+        BrowserScriptDirective,
+        MetaComponent, LabelComponent, AnnotationComponent],
       imports: [
-        AuthService,
+        AbilityModule,
         RouterTestingModule,
         CommonsModule,
         NoopAnimationsModule,
         CoreTestingModule.forRoot()
       ],
       providers: [
+        {
+          provide: AuthService,
+          useValue: {
+            canUpdate: () => true,
+            canDelete: () => true,
+          }
+        },
         {
           provide: LabelService,
           useValue: {
