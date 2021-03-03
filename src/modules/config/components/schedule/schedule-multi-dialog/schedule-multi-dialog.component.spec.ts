@@ -11,7 +11,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {LabelMultiComponent} from '../../label/label-multi/label-multi.component';
 import {LabelService} from '../../../services';
 
-fdescribe('ScheduleMultiDialogComponent', () => {
+describe('ScheduleMultiDialogComponent', () => {
   let component: ScheduleMultiDialogComponent;
   let fixture: ComponentFixture<ScheduleMultiDialogComponent>;
 
