@@ -5,7 +5,7 @@ import {CoreTestingModule} from '../../../../core/core.testing.module';
 import {ConfigObject} from '../../../../../shared/models/config';
 import {MatIconModule} from '@angular/material/icon';
 
-fdescribe('MetaPreviewComponent', () => {
+describe('MetaPreviewComponent', () => {
   let component: MetaPreviewComponent;
   let fixture: ComponentFixture<MetaPreviewComponent>;
 
