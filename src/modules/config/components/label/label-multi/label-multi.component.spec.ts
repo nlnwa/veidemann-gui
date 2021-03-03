@@ -5,7 +5,7 @@ import {LabelService} from '../../../services';
 import {ConfigObject} from '../../../../../shared/models/config';
 import {MaterialModule} from '../../../../commons/material.module';
 
-fdescribe('LabelMultiComponent', () => {
+describe('LabelMultiComponent', () => {
   let component: LabelMultiComponent;
   let fixture: ComponentFixture<LabelMultiComponent>;
 
