@@ -11,7 +11,7 @@ import {CoreTestingModule} from '../../../core/core.testing.module';
 import {AbilityModule} from '@casl/angular';
 import {CommonsModule} from '../../../commons';
 
-fdescribe('SeedMetaComponent', () => {
+describe('SeedMetaComponent', () => {
   let component: SeedMetaComponent;
   let fixture: ComponentFixture<SeedMetaComponent>;
 
