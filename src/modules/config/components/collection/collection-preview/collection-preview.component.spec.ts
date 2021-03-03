@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { CollectionPreviewComponent } from './collection-preview.component';
+import {CollectionPreviewComponent} from './collection-preview.component';
+import {CommonsModule} from '../../../../commons';
+import {ConfigObject, Kind} from '../../../../../shared/models/config';
 
 describe('CollectionPreviewComponent', () => {
   let component: CollectionPreviewComponent;
@@ -8,8 +10,9 @@ describe('CollectionPreviewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [],
-      declarations: [ CollectionPreviewComponent ]
+      imports: [CommonsModule],
+      declarations: [ CollectionPreviewComponent ],
+      providers: []
     })
     .compileComponents();
   }));
@@ -17,6 +20,8 @@ describe('CollectionPreviewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CollectionPreviewComponent);
     component = fixture.componentInstance;
+    // FIXME: Unødvendig init?
+    component.configObject = new ConfigObject({kind: Kind.COLLECTION});
     fixture.detectChanges();
   });
 
@@ -24,3 +29,4 @@ describe('CollectionPreviewComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
