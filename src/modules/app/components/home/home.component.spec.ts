@@ -7,7 +7,7 @@ import {CoreTestingModule} from '../../../core/core.testing.module';
 import {AbilityModule} from '@casl/angular';
 
 
-fdescribe('HomeComponent', () => {
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
