@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ShortcutListComponent } from './shortcut-list.component';
 import {ConfigObject, Kind} from '../../../../../shared/models/config';
 
-fdescribe('ShortcutListComponent', () => {
+describe('ShortcutListComponent', () => {
   let component: ShortcutListComponent;
   let fixture: ComponentFixture<ShortcutListComponent>;
 
