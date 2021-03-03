@@ -14,7 +14,7 @@ import {AuthService} from '../../../../core/services/auth';
 import {AnnotationComponent, LabelComponent, MetaComponent} from '../..';
 import {AbilityModule} from '@casl/angular';
 
-fdescribe('BrowserScriptDetailsComponent', () => {
+describe('BrowserScriptDetailsComponent', () => {
   let component: BrowserScriptDetailsComponent;
   let fixture: ComponentFixture<BrowserScriptDetailsComponent>;
   let expectedLabel: Label;
