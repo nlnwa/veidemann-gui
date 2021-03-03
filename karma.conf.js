@@ -28,6 +28,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
+    concurrency: 1,
     browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true
