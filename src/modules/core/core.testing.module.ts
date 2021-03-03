@@ -1,8 +1,9 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 
 import {AppConfigService, AuthService, ConfigApiService, ErrorService, GuardService, SnackBarService} from './services';
-import {AppInitializerService} from './services/app.initializer.service';
+import {AppInitializerService} from './services';
 import {of} from 'rxjs';
+import {Ability, PureAbility} from '@casl/ability';
 
 
 @NgModule()
@@ -11,6 +12,8 @@ export class CoreTestingModule {
     return {
       ngModule: CoreTestingModule,
       providers: [
+        {provide: Ability, useValue: new Ability()},
+        {provide: PureAbility, useExisting: Ability},
         {
           provide: AppConfigService,
           useValue: {}
