@@ -1,18 +1,25 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
-import {OAuthService} from "angular-oauth2-oidc";
+import {HomeComponent} from './home.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {HealthApiService} from '../../../core/services/api/health-api.service';
+import {CoreTestingModule} from '../../../core/core.testing.module';
+import {AbilityModule} from '@casl/angular';
 
-describe('HomeComponent', () => {
+
+fdescribe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [OAuthService],
-      declarations: [ HomeComponent ]
+      imports: [CoreTestingModule.forRoot(), MatDialogModule, AbilityModule],
+      providers: [
+        {provide: HealthApiService, useValue: {}}
+      ],
+      declarations: [HomeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
