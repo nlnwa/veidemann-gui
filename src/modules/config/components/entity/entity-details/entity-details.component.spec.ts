@@ -1,13 +1,17 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {EntityDetailsComponent} from './entity-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from '../../../../commons/material.module';
-import {AuthService} from '../../../../core/services/auth';
+import {AuthService} from '../../../../core';
 import {DatePipe} from '@angular/common';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {LabelService} from '../../../services/label.service';
+import {LabelService} from '../../../services';
 import {of} from 'rxjs';
+import {AnnotationComponent, LabelComponent, MetaComponent} from '../..';
+import {ConfigObject, Kind} from '../../../../../shared/models';
+import {AbilityModule} from '@casl/angular';
+import {CoreTestingModule} from '../../../../core/core.testing.module';
 
 describe('EntityDetailsComponent', () => {
   let component: EntityDetailsComponent;
@@ -15,8 +19,10 @@ describe('EntityDetailsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [EntityDetailsComponent],
+      declarations: [EntityDetailsComponent, MetaComponent, LabelComponent, AnnotationComponent],
       imports: [
+        CoreTestingModule.forRoot(),
+        AbilityModule,
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,
@@ -28,7 +34,7 @@ describe('EntityDetailsComponent', () => {
         {
           provide: AuthService,
           useValue: {
-            isAdmin: () => true
+            canUpdate: () => true
           }
         },
         {
@@ -45,6 +51,7 @@ describe('EntityDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EntityDetailsComponent);
     component = fixture.componentInstance;
+    component.configObject = new ConfigObject({kind: Kind.CRAWLENTITY});
     fixture.detectChanges();
   });
 
