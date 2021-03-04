@@ -1,11 +1,14 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {LoglevelComponent} from './loglevel.component';
-import {CommonsModule} from '../../../commons/commons.module';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {CommonsModule} from '../../../commons';
 import {CoreTestingModule} from '../../../core/core.testing.module';
-import {SnackBarService} from '../../../core/services';
+import {AuthService} from '../../../core';
 import {RouterTestingModule} from '@angular/router/testing';
 import {LogService} from '../../services';
+import {of} from 'rxjs';
+import {LogLevel} from '../../../../shared/models';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+
 
 describe('LoglevelComponent', () => {
   let component: LoglevelComponent;
@@ -15,16 +18,19 @@ describe('LoglevelComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonsModule,
-        LogService,
+        NoopAnimationsModule,
         RouterTestingModule,
-        CoreTestingModule.forRoot(),
-        HttpClientTestingModule
+        CoreTestingModule.forRoot()
       ],
       providers: [
+        { provide: LogService, useValue: {
+          getLogConfig: () => of({logLevelList: [new LogLevel()]})
+          }},
         {
-          provide: SnackBarService,
-          useValue: {}
-        }
+          provide: AuthService, useValue: {
+            canUpdate: () => true
+          }
+        },
       ],
       declarations: [LoglevelComponent]
     })
