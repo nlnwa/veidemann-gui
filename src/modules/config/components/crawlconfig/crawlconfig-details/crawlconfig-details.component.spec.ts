@@ -5,6 +5,12 @@ import {AuthService} from '../../../../core';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CommonsModule} from '../../../../commons';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {MetaComponent} from '../../meta/meta.component';
+import {LabelComponent} from '../../label/label.component';
+import {LabelService} from '../../../services';
+import {of} from 'rxjs';
+import {AnnotationComponent} from '../../annotation/annotation.component';
+import {AbilityModule} from '@casl/angular';
 
 describe('CrawlConfigDetailsComponent', () => {
   let component: CrawlConfigDetailsComponent;
@@ -12,9 +18,15 @@ describe('CrawlConfigDetailsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [CoreTestingModule.forRoot(), CommonsModule, NoopAnimationsModule],
-      declarations: [CrawlConfigDetailsComponent],
+      imports: [AbilityModule, CoreTestingModule.forRoot(), CommonsModule, NoopAnimationsModule],
+      declarations: [CrawlConfigDetailsComponent, MetaComponent, LabelComponent, AnnotationComponent],
       providers: [
+        {
+          provide: LabelService,
+          useValue: {
+            getLabelKeys: () => of([])
+          }
+        },
         {provide: AuthService, useValue: {canUpdate: () => true}},
       ]
     })
