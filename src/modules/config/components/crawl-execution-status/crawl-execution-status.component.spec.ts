@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {CrawlExecutionStatusComponent} from './crawl-execution-status.component';
-import {CrawlExecutionStatus} from '../../../../shared/models/report';
+import {CrawlExecutionStatus} from '../../../../shared/models';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MatExpansionPanel} from '@angular/material/expansion';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -23,7 +23,6 @@ describe('CrawlExecutionStatusComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CrawlExecutionStatusComponent);
     component = fixture.componentInstance;
-    // FIXME: Unødvendig? init
     component.crawlExecutionStatus = new CrawlExecutionStatus();
     fixture.detectChanges();
   });
