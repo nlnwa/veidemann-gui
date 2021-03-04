@@ -1,7 +1,11 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BrowserconfigPreviewComponent } from './browserconfig-preview.component';
-import {CommonsModule} from "../../../../commons";
+import {CommonsModule} from '../../../../commons';
+import {ConfigObject, Kind} from '../../../../../shared/models';
+import {ShortcutListComponent} from '../../shortcut/shortcut-list/shortcut-list.component';
+import {AbilityModule} from '@casl/angular';
+import {CoreTestingModule} from '../../../../core/core.testing.module';
 
 describe('BrowserconfigPreviewComponent', () => {
   let component: BrowserconfigPreviewComponent;
@@ -9,8 +13,9 @@ describe('BrowserconfigPreviewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [CommonsModule],
-      declarations: [ BrowserconfigPreviewComponent ]
+      imports: [CommonsModule, CoreTestingModule.forRoot(), AbilityModule],
+      declarations: [ BrowserconfigPreviewComponent, ShortcutListComponent ],
+      providers: []
     })
     .compileComponents();
   }));
@@ -18,6 +23,7 @@ describe('BrowserconfigPreviewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BrowserconfigPreviewComponent);
     component = fixture.componentInstance;
+    component.configObject = new ConfigObject({kind: Kind.BROWSERCONFIG});
     fixture.detectChanges();
   });
 
