@@ -1,15 +1,18 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {CrawlHostGroupConfigDetailsComponent} from './crawlhostgroupconfig-details.component';
 import {FormGroup} from '@angular/forms';
 import {SimpleChange} from '@angular/core';
-import {ConfigObject, Kind, Label} from '../../../../../shared/models';
-import {CommonsModule} from '../../../../commons/commons.module';
+import {ConfigObject, Kind, Label, Meta} from '../../../../../shared/models';
+import {CommonsModule} from '../../../../commons';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreTestingModule} from '../../../../core/core.testing.module';
 import {IpRange} from '../../../../../shared/models/config/ip-range.model';
-import {LabelService} from '../../../services/label.service';
+import {LabelService} from '../../../services';
 import {of} from 'rxjs';
+import {AuthService} from '../../../../core';
+import {AnnotationComponent, LabelComponent, MetaComponent} from '../..';
+import {AbilityModule} from '@casl/angular';
 
 describe('CrawlHostGroupConfigDetailsComponent', () => {
   let component: CrawlHostGroupConfigDetailsComponent;
@@ -20,8 +23,9 @@ describe('CrawlHostGroupConfigDetailsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [CrawlHostGroupConfigDetailsComponent],
+      declarations: [CrawlHostGroupConfigDetailsComponent, MetaComponent, LabelComponent, AnnotationComponent],
       imports: [
+        AbilityModule,
         CommonsModule,
         RouterTestingModule,
         NoopAnimationsModule,
@@ -33,7 +37,14 @@ describe('CrawlHostGroupConfigDetailsComponent', () => {
           useValue: {
             getLabelKeys: () => of([])
           }
-        }
+        },
+        {
+          provide: AuthService, useValue: {
+            canUpdate: () => true,
+            canDelete: () => true
+          }
+        },
+        Meta
       ]
     })
       .compileComponents();
@@ -156,4 +167,5 @@ describe('CrawlHostGroupConfigDetailsComponent', () => {
 
     component.onSave();
   });
+
 });
