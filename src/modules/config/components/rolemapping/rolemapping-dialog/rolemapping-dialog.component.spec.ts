@@ -4,23 +4,19 @@ import {RoleMappingDialogComponent} from './rolemapping-dialog.component';
 import {FormBuilder} from '@angular/forms';
 import {CoreTestingModule} from '../../../../core/core.testing.module';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {ConfigObject, Kind} from '../../../../../shared/models/config';
+import {ConfigObject, Kind} from '../../../../../shared/models';
 import {MatError} from '@angular/material/form-field';
 import {CommonsModule} from '../../../../commons';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {ConfigDialogData} from '../../../func';
 
-fdescribe('RoleMappingDialogComponent', () => {
+describe('RoleMappingDialogComponent', () => {
   let component: RoleMappingDialogComponent;
   let fixture: ComponentFixture<RoleMappingDialogComponent>;
 
-  // TODO: Use ConfigDialogData
-  // FIXME: unødvendig initialisering
-  const MY_CONF = {
-    configObject: new ConfigObject(
-      {
-        kind: Kind.ROLEMAPPING,
-      }),
-    options: [],
+  const MY_CONF: ConfigDialogData = {
+    configObject: new ConfigObject({kind: Kind.ROLEMAPPING}),
+    options: {},
     allSelected: false
   };
 
