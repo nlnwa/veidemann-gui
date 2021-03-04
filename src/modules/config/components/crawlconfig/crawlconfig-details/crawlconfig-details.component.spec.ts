@@ -1,5 +1,4 @@
 import {CrawlConfigDetailsComponent} from './crawlconfig-details.component';
-import {FormBuilder} from '@angular/forms';
 import {CoreTestingModule} from '../../../../core/core.testing.module';
 import {ConfigObject, Kind} from '../../../../../shared/models';
 import {AuthService} from '../../../../core';
@@ -15,7 +14,7 @@ describe('CrawlConfigDetailsComponent', () => {
     TestBed.configureTestingModule({
       imports: [CoreTestingModule.forRoot(), CommonsModule, NoopAnimationsModule],
       declarations: [CrawlConfigDetailsComponent],
-      providers: [FormBuilder,
+      providers: [
         {provide: AuthService, useValue: {canUpdate: () => true}},
       ]
     })
