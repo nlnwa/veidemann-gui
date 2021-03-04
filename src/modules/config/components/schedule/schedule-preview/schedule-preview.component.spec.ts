@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {SchedulePreviewComponent} from './schedule-preview.component';
-import {ConfigObject, Kind} from '../../../../../shared/models/config';
+import {ConfigObject, Kind} from '../../../../../shared/models';
 import {MatLabel} from '@angular/material/form-field';
 
 describe('SchedulePreviewComponent', () => {
@@ -20,7 +20,6 @@ describe('SchedulePreviewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SchedulePreviewComponent);
     component = fixture.componentInstance;
-    // FIXME: burde ikke være nødvendig, komponenten bør kunne initialisere seg selv?
     component.configObject = new ConfigObject({kind: Kind.CRAWLSCHEDULECONFIG});
     fixture.detectChanges();
   });
