@@ -1,18 +1,61 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { CrawlJobDialogComponent } from './crawljob-dialog.component';
-import {FormBuilder} from '@angular/forms';
+import {CrawlJobDialogComponent} from './crawljob-dialog.component';
+import {AuthService} from '../../../../core';
+import {CoreTestingModule} from '../../../../core/core.testing.module';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {ConfigDialogData} from '../../../func';
+import {ConfigObject, Kind} from '../../../../../shared/models';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  AnnotationComponent,
+  DurationPickerComponent,
+  FilesizeInputComponent,
+  LabelComponent,
+  MetaComponent
+} from '../..';
+import {CommonsModule} from '../../../../commons';
+import {LabelService} from '../../../services';
+import {AbilityModule} from '@casl/angular';
+import {of} from 'rxjs';
 
 describe('CrawlJobDialogComponent', () => {
   let component: CrawlJobDialogComponent;
   let fixture: ComponentFixture<CrawlJobDialogComponent>;
 
+  const MY_CONF: ConfigDialogData = {
+    configObject: new ConfigObject({kind: Kind.CRAWLJOB}),
+    options: {}
+  };
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormBuilder],
-      declarations: [ CrawlJobDialogComponent ]
+      imports: [AbilityModule, CommonsModule, NoopAnimationsModule, CoreTestingModule.forRoot()],
+      declarations: [
+        MetaComponent,
+        CrawlJobDialogComponent,
+        FilesizeInputComponent,
+        DurationPickerComponent,
+        LabelComponent,
+        AnnotationComponent],
+      providers: [
+        {
+          provide: LabelService,
+          useValue: {
+            getLabelKeys: () => of([])
+          }
+        },
+        {
+          provide: AuthService,
+          useValue: {
+            canUpdate: () => true,
+          }
+        },
+        {provide: MAT_DIALOG_DATA, useValue: MY_CONF},
+        {provide: MatDialogRef, useValue: {}}
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
