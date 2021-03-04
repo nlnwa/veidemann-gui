@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {PageLogStatusComponent} from './page-log-status.component';
-import {AppConfigService} from "../../../core/services";
+import {CoreTestingModule} from '../../../core/core.testing.module';
 
 describe('PageLogStatusComponent', () => {
   let component: PageLogStatusComponent;
@@ -9,8 +9,9 @@ describe('PageLogStatusComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [AppConfigService],
-      declarations: [ PageLogStatusComponent ]
+      imports: [CoreTestingModule.forRoot()],
+      declarations: [ PageLogStatusComponent ],
+      providers: []
     })
     .compileComponents();
   }));
