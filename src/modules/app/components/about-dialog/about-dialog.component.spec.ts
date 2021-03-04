@@ -1,9 +1,8 @@
 import {AboutDialogComponent} from './about-dialog.component';
-import {AppConfigService} from '../../../core/services';
+import {AppConfigService} from '../../../core';
 import {createComponentFactory, Spectator} from '@ngneat/spectator';
 import {DeploymentVersions} from '../../../../shared/models/deployment-versions.model';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatDividerModule} from '@angular/material/divider';
+import {CommonsModule} from '../../../commons';
 
 describe('AboutDialogComponent', () => {
   let spectator: Spectator<AboutDialogComponent>;
@@ -15,7 +14,7 @@ describe('AboutDialogComponent', () => {
   const createComponent = createComponentFactory(
     {
       component: AboutDialogComponent,
-      imports: [MatDialogModule, MatDividerModule],
+      imports: [CommonsModule],
       providers: [{provide: AppConfigService, useValue: {versions}}]
     });
 
@@ -29,9 +28,16 @@ describe('AboutDialogComponent', () => {
     expect(spectator.component.dashBoardversion).toBe('DEV');
   });
 
-  it('should have expected content in deployment-version-list ', () => {
+  it('should have expectedVersion in deployment-version-list ', () => {
     const list = spectator.queryAll('.deployment-version-list li');
     expect(list).not.toBeNull();
     expect(list).toHaveText(expectedVersion);
   });
+
+  it('should show Veidemann-frontier in deployment-version-list ', () => {
+    const list = spectator.queryAll('.deployment-version-list li');
+    expect(list).not.toBeNull();
+    expect(list).toHaveText('Veidemann-frontier');
+  });
+
 });
