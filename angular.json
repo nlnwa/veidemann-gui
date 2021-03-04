@@ -150,6 +150,7 @@
     }
   },
   "cli": {
+    "analytics": false,
     "packageManager": "yarn"
   }
 }
