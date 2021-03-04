@@ -90,6 +90,7 @@ describe('Regular expression patterns', () => {
     });
 
     // TODO excluded becase we use a simple VALID_URL pattern that fails the test for a number of invalid url's
+    // FIXME: If we dont use the pattern, it should be removed, makes code harder to read
     xit('should not match invalid urls', () => {
       invalidUrls.forEach(invalidUrl => expect(invalidUrl).not.toMatch(VALID_URL));
     });
