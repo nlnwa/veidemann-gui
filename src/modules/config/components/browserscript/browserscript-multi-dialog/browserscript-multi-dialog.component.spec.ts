@@ -1,17 +1,33 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import {FormBuilder, FormsModule} from '@angular/forms';
-import { BrowserScriptMultiDialogComponent } from './browserscript-multi-dialog.component';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {BrowserScriptMultiDialogComponent} from './browserscript-multi-dialog.component';
+import {CoreTestingModule} from '../../../../core/core.testing.module';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {ConfigObject, Kind} from '../../../../../shared/models';
+import {AuthService} from '../../../../core';
+import {CommonsModule} from '../../../../commons';
+import {LabelMultiComponent} from '../../label/label-multi/label-multi.component';
+import {LabelService} from '../../../services';
 
 describe('BrowserScriptMultiDialogComponent', () => {
   let component: BrowserScriptMultiDialogComponent;
   let fixture: ComponentFixture<BrowserScriptMultiDialogComponent>;
 
+  const MY_CONF = {
+    configObject: new ConfigObject({kind: Kind.BROWSERSCRIPT})
+  };
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, FormBuilder],
-      declarations: [ BrowserScriptMultiDialogComponent ]
+      imports: [CoreTestingModule.forRoot(), CommonsModule],
+      declarations: [BrowserScriptMultiDialogComponent, LabelMultiComponent],
+      providers: [
+        {provide: LabelService, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: MY_CONF},
+        {provide: MatDialogRef, useValue: {}},
+        {provide: AuthService, useValue: {canUpdate: () => true}}
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
