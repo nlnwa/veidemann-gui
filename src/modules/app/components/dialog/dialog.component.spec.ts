@@ -3,7 +3,7 @@ import {DialogComponent} from './dialog.component';
 import {createComponentFactory, Spectator} from '@ngneat/spectator';
 import {CommonsModule} from '../../../commons';
 
-fdescribe('DialogComponent', () => {
+describe('DialogComponent', () => {
   let spectator: Spectator<DialogComponent>;
 
   const createComponent = createComponentFactory(
