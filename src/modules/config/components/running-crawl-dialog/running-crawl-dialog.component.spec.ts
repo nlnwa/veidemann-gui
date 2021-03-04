@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {RunningCrawlDialogComponent} from './running-crawl-dialog.component';
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {ConfigObject} from '../../../../shared/models/config';
+import {ConfigObject, Kind} from '../../../../shared/models';
 
 describe('RunningCrawlDialogComponent', () => {
   let component: RunningCrawlDialogComponent;
@@ -23,7 +23,6 @@ describe('RunningCrawlDialogComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RunningCrawlDialogComponent);
     component = fixture.componentInstance;
-    // FIXME: Unødvendig init?
     component.configObject = new ConfigObject();
     fixture.detectChanges();
   });
@@ -31,4 +30,19 @@ describe('RunningCrawlDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  xit('should create with Seed', () => {
+    component.configObject = new ConfigObject({kind: Kind.SEED});
+    // TODO: Mocke RunCrawlRequest og RunCrawlReply
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
+  });
+
+  xit('should create with Crawljob', () => {
+    component.configObject = new ConfigObject({kind: Kind.CRAWLJOB});
+    // TODO: Mocke RunCrawlRequest og RunCrawlReply
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
+  });
+
 });
