@@ -1,14 +1,17 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {ScheduleDetailsComponent} from './schedule-details.component';
 import {SimpleChange} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {ConfigObject, Kind, Label} from '../../../../../shared/models';
-import {CommonsModule} from '../../../../commons/commons.module';
+import {CommonsModule} from '../../../../commons';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreTestingModule} from '../../../../core/core.testing.module';
-import {LabelService} from '../../../services/label.service';
+import {LabelService} from '../../../services';
 import {of} from 'rxjs';
+import {AuthService} from '../../../../core';
+import {AnnotationComponent, LabelComponent, MetaComponent} from '../..';
+import {AbilityModule} from '@casl/angular';
 
 describe('ScheduleDetailsComponent', () => {
   let component: ScheduleDetailsComponent;
@@ -18,14 +21,23 @@ describe('ScheduleDetailsComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ScheduleDetailsComponent],
+      declarations: [ScheduleDetailsComponent, MetaComponent, LabelComponent, AnnotationComponent],
       imports: [
+        AbilityModule,
         CommonsModule,
         RouterTestingModule,
         NoopAnimationsModule,
         CoreTestingModule.forRoot()
       ],
       providers: [
+        {
+          provide: AuthService,
+          useValue: {
+            canEdit: () => true,
+            canUpdate: () => true,
+            canDelete: () => true,
+          }
+        },
         {
           provide: LabelService,
           useValue: {
