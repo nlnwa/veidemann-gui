@@ -1,18 +1,70 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
-import { BrowserConfigDialogComponent } from './browserconfig-dialog.component';
-import {FormBuilder} from '@angular/forms';
+import {BrowserConfigDialogComponent} from './browserconfig-dialog.component';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from '../../../../core';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {ConfigObject, Kind} from '../../../../../shared/models';
+import {AnnotationComponent, DurationPickerComponent, LabelComponent, MetaComponent, SelectorComponent} from '../..';
+import {DatePipe} from '@angular/common';
+import {CommonsModule} from '../../../../commons';
+import {ConfigDialogData} from '../../../func';
+import {LabelService} from '../../../services';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {of} from 'rxjs';
+import {AbilityModule} from '@casl/angular';
+import {CoreTestingModule} from '../../../../core/core.testing.module';
 
-describe('BrowserconfigDialogComponent', () => {
+describe('BrowserConfigDialogComponent', () => {
   let component: BrowserConfigDialogComponent;
   let fixture: ComponentFixture<BrowserConfigDialogComponent>;
 
+
+  const MY_CONF: ConfigDialogData = {
+    configObject: new ConfigObject({
+      kind: Kind.BROWSERCONFIG,
+    }),
+    options: {},
+    allSelected: false
+  };
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormBuilder],
-      declarations: [ BrowserConfigDialogComponent ]
+      imports: [CoreTestingModule.forRoot(),
+        AbilityModule,
+        CommonsModule,
+        NoopAnimationsModule,
+        MatDialogModule, ReactiveFormsModule],
+      providers: [FormBuilder, DatePipe,
+        {
+          provide: LabelService,
+          useValue: {
+            getLabelKeys: () => of([])
+          }
+        },
+        {
+          provide: AuthService,
+          useValue: {
+            isAdmin: () => true,
+            canUpdate: () => true,
+          }
+        },
+        {provide: MAT_DIALOG_DATA, useValue: MY_CONF},
+        {
+          provide: MatDialogRef,
+          useValue: {
+            close: () => {
+            }
+          }
+        }],
+      declarations: [BrowserConfigDialogComponent,
+        MetaComponent,
+        DurationPickerComponent,
+        SelectorComponent,
+        LabelComponent,
+        AnnotationComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
