@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PageLogQueryComponent } from './page-log-query.component';
-import {FormBuilder} from '@angular/forms';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {CommonsModule} from '../../../commons';
 
 describe('PageLogQueryComponent', () => {
   let component: PageLogQueryComponent;
@@ -9,8 +10,9 @@ describe('PageLogQueryComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [FormBuilder],
-      declarations: [ PageLogQueryComponent ]
+      imports: [CommonsModule, NoopAnimationsModule],
+      declarations: [ PageLogQueryComponent ],
+      providers: []
     })
     .compileComponents();
   }));
