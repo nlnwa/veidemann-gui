@@ -1,32 +1,23 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import {CrawlConfigDetailsComponent} from './crawlconfig-details.component';
-import {CommonsModule} from '../../../../commons/commons.module';
-import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterTestingModule} from '@angular/router/testing';
+import {FormBuilder} from '@angular/forms';
 import {CoreTestingModule} from '../../../../core/core.testing.module';
-import {LabelService} from '../../../services/label.service';
-import {of} from 'rxjs';
+import {ConfigObject, Kind} from '../../../../../shared/models';
+import {AuthService} from '../../../../core';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 
+// TODO: Issues with mat-form-field
 describe('CrawlConfigDetailsComponent', () => {
   let component: CrawlConfigDetailsComponent;
   let fixture: ComponentFixture<CrawlConfigDetailsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
+      imports: [CoreTestingModule.forRoot(), MatCheckboxModule, MatCardModule],
       declarations: [CrawlConfigDetailsComponent],
-      imports: [
-        CommonsModule,
-        RouterTestingModule,
-        NoopAnimationsModule,
-        CoreTestingModule.forRoot()
-      ],
-      providers: [
-        {
-          provide: LabelService,
-          useValue: {
-            getLabelKeys: () => of([])
-          }
-        }
+      providers: [FormBuilder,
+        {provide: AuthService, useValue: {canUpdate: () => true}},
       ]
     })
       .compileComponents();
@@ -35,6 +26,7 @@ describe('CrawlConfigDetailsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CrawlConfigDetailsComponent);
     component = fixture.componentInstance;
+    component.configObject = new ConfigObject({kind: Kind.CRAWLCONFIG});
     fixture.detectChanges();
   });
 
