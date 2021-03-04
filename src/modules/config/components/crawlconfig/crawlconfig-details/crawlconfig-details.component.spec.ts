@@ -4,17 +4,16 @@ import {CoreTestingModule} from '../../../../core/core.testing.module';
 import {ConfigObject, Kind} from '../../../../../shared/models';
 import {AuthService} from '../../../../core';
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatCardModule} from '@angular/material/card';
+import {CommonsModule} from '../../../../commons';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
-// TODO: Issues with mat-form-field
 describe('CrawlConfigDetailsComponent', () => {
   let component: CrawlConfigDetailsComponent;
   let fixture: ComponentFixture<CrawlConfigDetailsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [CoreTestingModule.forRoot(), MatCheckboxModule, MatCardModule],
+      imports: [CoreTestingModule.forRoot(), CommonsModule, NoopAnimationsModule],
       declarations: [CrawlConfigDetailsComponent],
       providers: [FormBuilder,
         {provide: AuthService, useValue: {canUpdate: () => true}},
