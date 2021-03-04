@@ -1,13 +1,16 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {MetaComponent} from './meta.component';
-import {MaterialModule} from '../../../commons/material.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DatePipe} from '@angular/common';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {LabelService} from '../../services/label.service';
+import {LabelService} from '../../services';
 import {of} from 'rxjs';
+import {CoreTestingModule} from '../../../core/core.testing.module';
+import {CommonsModule} from '../../../commons';
+import {LabelComponent} from '../label/label.component';
+import {AnnotationComponent} from '../annotation/annotation.component';
+import {AuthService} from '../../../core';
+import {AbilityModule} from '@casl/angular';
 
 describe('MetaComponent', () => {
   let component: MetaComponent;
@@ -15,16 +18,21 @@ describe('MetaComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [MetaComponent],
+      declarations: [MetaComponent, LabelComponent, AnnotationComponent],
       imports: [
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        DragDropModule,
+        AbilityModule,
+        CoreTestingModule.forRoot(),
+        CommonsModule,
         NoopAnimationsModule
       ],
       providers: [
         DatePipe,
+        {
+          provide: AuthService,
+          useValue: {
+            canUpdate: () => true,
+          }
+        },
         {
           provide: LabelService,
           useValue: {
