@@ -1,20 +1,16 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 
 import {CrawlConfigMultiDialogComponent} from './crawlconfig-multi-dialog.component';
-import {FormBuilder} from '@angular/forms';
 import {CoreTestingModule} from '../../../../core/core.testing.module';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ConfigObject, Kind} from '../../../../../shared/models';
 import {ConfigDialogData} from '../../../func';
 import {AuthService} from '../../../../core';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 import {LabelMultiComponent} from '../../label/label-multi/label-multi.component';
 import {LabelService} from '../../../services';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatChipsModule} from '@angular/material/chips';
+import {CommonsModule} from '../../../../commons';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
-// TODO-Minor: Mat-form-field
 describe('CrawlConfigMultiDialogComponent', () => {
   let component: CrawlConfigMultiDialogComponent;
   let fixture: ComponentFixture<CrawlConfigMultiDialogComponent>;
@@ -26,9 +22,9 @@ describe('CrawlConfigMultiDialogComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [CoreTestingModule.forRoot(), MatDialogModule, MatCheckboxModule, MatChipsModule, MatIconModule, MatButtonToggleModule],
+      imports: [CoreTestingModule.forRoot(), CommonsModule, NoopAnimationsModule],
       declarations: [ CrawlConfigMultiDialogComponent, LabelMultiComponent ],
-      providers: [FormBuilder,
+      providers: [
         {provide: LabelService, useValue: {}},
         {provide: AuthService, useValue: {canUpdate: () => true}},
         {provide: MAT_DIALOG_DATA, useValue: MY_CONF},
