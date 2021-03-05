@@ -15,8 +15,8 @@ describe('JobExecutionComponent', () => {
 
   const fakeActivatedRoute = {
     queryParamMap: of({
-      get: (key) => 'value',
-      getAll: (key) => 'value'
+      get: () => {},
+      getAll: () => {}
     }),
     snapshot: {
       data: {
@@ -47,4 +47,4 @@ describe('JobExecutionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-})
+});
