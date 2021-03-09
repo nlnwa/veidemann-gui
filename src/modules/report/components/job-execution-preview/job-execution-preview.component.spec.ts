@@ -2,9 +2,10 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { JobExecutionPreviewComponent } from './job-execution-preview.component';
 import {JobExecutionStatus} from '../../../../shared/models';
-import {NgxFilesizeModule} from 'ngx-filesize';
-import {MatCardModule} from '@angular/material/card';
 import {ChartsModule} from 'ng2-charts';
+import {RouterTestingModule} from '@angular/router/testing';
+import {ActivatedRoute} from '@angular/router';
+import {CommonsModule} from '../../../commons';
 
 describe('JobExecutionPreviewComponent', () => {
   let component: JobExecutionPreviewComponent;
@@ -13,8 +14,10 @@ describe('JobExecutionPreviewComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ JobExecutionPreviewComponent ],
-      imports: [NgxFilesizeModule, MatCardModule, ChartsModule],
-      providers: []
+      imports: [ CommonsModule, ChartsModule, RouterTestingModule],
+      providers: [
+        {provide: ActivatedRoute, useValue: {}}
+        ]
     })
     .compileComponents();
   }));
