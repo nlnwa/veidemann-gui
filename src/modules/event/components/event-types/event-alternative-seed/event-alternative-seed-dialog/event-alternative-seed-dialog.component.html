@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>
+  <ng-container i18n="@@eventAltertnativeSeedDialogTitle">Alternative seed</ng-container>
+</h2>
+
+<mat-dialog-content *ngIf="eventObject">
+  <div *ngIf="configObject">
+    <p>Found an alternative URL during crawl for seed</p><a [routerLink]="['/config','seed', configObject.id]">
+    {{configObject.meta.name}}</a>
+
+    <ng-container *ngIf="!seedAltSeedAnnotation">
+      <h4> Want to add annotation:</h4>
+      <mat-chip-list>
+        <mat-chip style="background-color: green">scope_altSeed:{{eventAltSeed}}</mat-chip>
+      </mat-chip-list>
+    </ng-container>
+    <ng-container *ngIf="seedAltSeedAnnotation && !annotationExistsInList()">
+      <h4>Want to add the alternative URL to existing scope_altSeed annotation: </h4>
+      <mat-chip-list>
+        <mat-chip>{{seedAltSeedAnnotation.key}}:{{seedAltSeedAnnotation.value}}</mat-chip>
+        <mat-chip style="background-color: green">{{eventAltSeed}}</mat-chip>
+      </mat-chip-list>
+    </ng-container>
+    <ng-container *ngIf="seedAltSeedAnnotation && annotationExistsInList()">
+      <h4>URL already exists in seeds scope_altSeed annotation</h4>
+      <mat-chip-list>
+        <mat-chip>{{seedAltSeedAnnotation.key}}:{{seedAltSeedAnnotation.value}}</mat-chip>
+      </mat-chip-list>
+    </ng-container>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions *ngIf="configObject">
+  <button mat-raised-button color="accent"
+          *ngIf="!annotationExistsInList()"
+          matTooltip="Add annotation to seed and close event"
+          (click)="onAdd(true)">ADD AND CLOSE
+  </button>
+  <button mat-button
+          *ngIf="!annotationExistsInList()"
+          matTooltip="Add annotation but keep event open"
+          (click)="onAdd(false)">ADD
+  </button>
+  <button mat-raised-button color="accent"
+          *ngIf="annotationExistsInList()"
+          matTooltip="Close event"
+          (click)="onCloseEvent()">CLOSE
+  </button>
+  <button mat-button
+          mat-dialog-close i18n="@@commonButtonCancel">CANCEL
+  </button>
+</mat-dialog-actions>
