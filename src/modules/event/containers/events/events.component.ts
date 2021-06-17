@@ -30,6 +30,7 @@ import {ConfigService} from '../../../commons/services';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsComponent implements OnInit, OnDestroy {
+
   readonly State = State;
   readonly EventType = EventType;
 
@@ -128,10 +129,6 @@ export class EventsComponent implements OnInit, OnDestroy {
     const sortActive$ = sort$.pipe(
       map(sort => sort ? sort.active : ''));
 
-    // const init$ = of(null).pipe(
-    //   distinctUntilChanged(),
-    // );
-
     const query$: Observable<EventQuery> = combineLatest([
       assignee$,
       source$,
@@ -141,7 +138,6 @@ export class EventsComponent implements OnInit, OnDestroy {
       sortDirection$,
       pageIndex$,
       pageSize$,
-      // init$,
       this.reload.pipe(startWith(null as string))
     ]).pipe(
       debounceTime<any>(0),
