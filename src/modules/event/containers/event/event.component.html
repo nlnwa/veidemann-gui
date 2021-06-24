@@ -1,0 +1,15 @@
+<div class="container">
+  <ng-container *ngIf="eventObject$ | async as eventObject">
+    <div fxLayout="row">
+      <app-event-shortcuts [eventObject]="eventObject"
+                           (assign)="onAssignToMe($event)"
+                           (alternativeSeed)="onAddAlternativeSeed($event)"></app-event-shortcuts>
+    </div>
+    <div class="content-padding" fxFlex>
+      <app-event-details [eventObject]="eventObject"
+                         (update)="onUpdateEvent($event)"
+                         (delete)="onDeleteEvent($event)"
+      ></app-event-details>
+    </div>
+  </ng-container>
+</div>

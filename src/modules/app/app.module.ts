@@ -19,6 +19,7 @@ import {AbilityModule} from '@casl/angular';
 import {Ability, PureAbility} from '@casl/ability';
 import { HomeComponent } from './components/home/home.component';
 import {KeyboardShortcutsModule} from 'ng-keyboard-shortcuts';
+import {EventModule} from '../event/event.module';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {KeyboardShortcutsModule} from 'ng-keyboard-shortcuts';
         CommonsModule,
         CoreModule,
         AbilityModule,
-        KeyboardShortcutsModule.forRoot()
+        KeyboardShortcutsModule.forRoot(),
+        EventModule
     ],
   providers: [
     {provide: Ability, useValue: new Ability()},

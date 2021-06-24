@@ -1,5 +1,5 @@
-import {ActivityProto, DataProto, EventObjectProto} from '../../../api';
-import {fromTimestampProto, intersectString} from '../../func';
+import {ActivityProto, DataProto, EventObjectProto, EventRefProto} from '../../../api';
+import {fromTimestampProto, intersectString, isNumeric} from '../../func';
 
 export enum State {
   NEW = 0,
@@ -7,11 +7,17 @@ export enum State {
   CLOSED = 2
 }
 
+export const States: State[] =
+  Object.keys(State).filter(p => !isNumeric(p)).map(state => State[state]);
+
 export enum Severity {
   INFO = 0,
   WARN = 1,
   ERROR = 2
 }
+
+export const Severities: Severity[] =
+  Object.keys(Severity).filter(p => !isNumeric(p)).map(severity => Severity[severity]);
 
 export enum ChangeType {
   CREATED = 0,
@@ -19,6 +25,9 @@ export enum ChangeType {
   ARRAY_ADD = 2,
   ARRAY_DEL = 3
 }
+
+export const ChangeTypes: ChangeType[] =
+  Object.keys(ChangeType).filter(p => !isNumeric(p)).map(changeType => ChangeType[changeType]);
 
 export class Data {
   key?: string;
@@ -81,9 +90,35 @@ export class Activity {
   }
 }
 
+export class EventRef {
+  id?: string;
+
+  constructor({
+                id = ''
+              }: Partial<EventRef> = {}) {
+    this.id = id;
+  }
+
+  static fromProto(proto: EventRefProto): EventRef {
+    return new EventRef({
+      id: proto.getId()
+    });
+  }
+
+  static toProto(eventRef: EventRef): EventRefProto {
+    if (!eventRef) {
+      return undefined;
+    }
+
+    const proto = new EventRefProto();
+    proto.setId(eventRef.id);
+    return proto;
+  }
+}
+
 
 export class EventObject {
-  id?: string;
+  id: string;
   type?: string;
   source?: string;
   state: State;
@@ -93,16 +128,26 @@ export class EventObject {
   severity: Severity;
   labelList?: string[];
 
-  constructor(eventObject: EventObject | any = {}) {
-    this.id = eventObject.id || '';
-    this.type = eventObject.type || '';
-    this.source = eventObject.source || '';
-    this.state = eventObject.state;
-    this.assignee = eventObject.assignee || '';
-    this.activityList = eventObject.activityList || [];
-    this.dataList = eventObject.dataList || [];
-    this.severity = eventObject.severity;
-    this.labelList = eventObject.labelList || [];
+  constructor({
+                id = '',
+                type = '',
+                source = '',
+                state = State.NEW,
+                assignee = '',
+                activityList = [],
+                dataList = [],
+                severity = Severity.INFO,
+                labelList = [],
+              }: Partial<EventObject> = {}) {
+    this.id = id;
+    this.type = type;
+    this.source = source;
+    this.state = state;
+    this.assignee = assignee;
+    this.activityList = activityList ? activityList.map(activity => new Activity(activity)) : [];
+    this.dataList = dataList;
+    this.severity = severity;
+    this.labelList = labelList;
   }
 
   static fromProto(proto: EventObjectProto): EventObject {
@@ -110,7 +155,7 @@ export class EventObject {
       id: proto.getId(),
       type: proto.getType(),
       source: proto.getSource(),
-      state: proto.getState(),
+      state: State[State[proto.getState()]],
       assignee: proto.getAssignee(),
       activityList: proto.getActivityList().map(activity => new Activity({
         modifiedTime: fromTimestampProto(activity.getModifiedTime()),
@@ -124,7 +169,7 @@ export class EventObject {
         comment: activity.getComment()
       })),
       dataList: proto.getDataList().map(data => new Data({key: data.getKey(), value: data.getValue()})),
-      severity: proto.getSeverity(),
+      severity: Severity[Severity[proto.getSeverity()]],
       labelList: proto.getLabelList()
     });
   }
@@ -133,8 +178,8 @@ export class EventObject {
     const proto = new EventObjectProto();
     proto.setId(eventObject.id);
     proto.setAssignee(eventObject.assignee);
-    proto.setSeverity(eventObject.severity);
-    proto.setState(eventObject.state);
+    proto.setSeverity(eventObject.severity.valueOf());
+    proto.setState(eventObject.state.valueOf());
     proto.setSource(eventObject.source);
     proto.setType(eventObject.type);
     proto.setDataList(eventObject.dataList.map(data => {
